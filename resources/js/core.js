@@ -19,6 +19,7 @@ const photoBooth = (function () {
         },
         videoView = $('#video--view').get(0),
         videoPreview = $('#video--preview').get(0),
+        previewVideoPlayer = null,
         videoSensor = document.querySelector('#video--sensor');
 
     let timeOut,
@@ -108,6 +109,51 @@ const photoBooth = (function () {
         $('#mySidenav').toggleClass('sidenav--open');
     }
 
+    public.startRemotePreview = function () {
+        $.ajax({
+            method: 'POST',
+            url: 'api/videoPreview.php',
+            data: {},
+            success: () => {},
+            error: (jqXHR, textStatus) => {
+                console.log('An error occurred', textStatus);
+            },
+        });
+
+        const ctx = document.getElementById("remoteVideo").getContext("2d");
+        //img.src = config.background_image;
+
+        public.previewVideoPlayer = window.setInterval(function () {
+            console.log("Updating Image")
+            const img = new Image();
+            img.src = "http://localhost:8090/video-stream.mjpg?" + (new Date()).getTime();
+            ctx.drawImage(img, 0, 0, 960, 640, 0, 0, 960, 640);
+        }, 5000);
+    }
+
+    function motionjpeg(id) {
+        var image = $(id), src;
+
+        if (!image.length) return;
+
+        src = image.attr("src");
+        if (src.indexOf("?") < 0) {
+            image.attr("src", src + "?"); //must have querystring
+        }
+
+        image.addEventListener("load", function() {
+            console.log("Reload")
+            //this cause the load event to be called "recursively"
+            this.src = this.src.replace(/\?[^\n]*$/, "?") +
+                (new Date()).getTime(); //'this' refers to the image
+        });
+    }
+
+    public.stopRemotePreview = function () {
+        window.clearInterval(public.previewVideoPlayer);
+    }
+
+
     public.startVideo = function (mode) {
 
         if (config.previewCamBackground) {
@@ -176,6 +222,8 @@ const photoBooth = (function () {
         if (currentCollageFile && nextCollageNumber) {
             photoStyle = 'collage';
         }
+
+        public.startRemotePreview();
 
         if (config.previewFromCam) {
             public.startVideo('view');
