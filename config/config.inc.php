@@ -160,6 +160,8 @@ $config['mail_text'] = null;		// if empty, default translation is used
 
 $config['take_picture']['cmd'] = null;
 $config['take_picture']['msg'] = null;
+$config['start_preview']['cmd'] = null;
+$config['start_preview']['msg'] = null;
 $config['print']['cmd'] = null;
 $config['print']['msg'] = null;
 
