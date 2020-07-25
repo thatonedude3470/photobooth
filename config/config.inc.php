@@ -62,6 +62,8 @@ $config['rounded_corners'] = false;
 $config['time_to_live'] = '90000';
 $config['db_file'] = 'db';
 $config['mail_file'] = 'mail-adresses';
+$config['use_remotePreview'] = false;
+$config['remotePreviewURL'] = 'http://localhost:8090/video-stream.mjpg';
 
 // specify key id to use that key to take a picture or collage (e.g. 13 is the enter key)
 // use for example https://keycode.info to get the key code

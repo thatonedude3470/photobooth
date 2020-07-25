@@ -95,6 +95,12 @@ if ($data['type'] == 'config') {
         $newConfig['previewCamTakesPic'] = false;
     }
 
+    if ($newConfig['use_remotePreview']) {
+        $newConfig['previewFromCam'] = false;
+        $newConfig['previewCamTakesPic'] = false;
+        $newConfig['previewFromIPCam'] = false;
+    }
+
     $content = "<?php\n\$config = ". var_export(arrayRecursiveDiff($newConfig, $defaultConfig), true) . ";";
 
     if (file_put_contents($my_config_file, $content)) {
