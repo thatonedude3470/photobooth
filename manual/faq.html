@@ -381,5 +381,21 @@ for preview at countdown!
 
 <div class="highlight"><pre lang="">sudo ./setup-network.sh --clean
 </pre></div>
+
+<h3>Turn on file backup</h3>
+
+<p>If you want to enable the automatic file backup/syncing script you need to add a<br />cronjob that changes the working directoy to the photobooth folder and calls the<br />script. Per default the script will run every <a href="https://crontab.guru/#*/5_*_*_*_*">5 minutes</a>.</p>
+
+<p><strong>Important: You must make sure change to the photobooth directory because the script expects to be run from within the photobooth folder!</strong>.</p>
+
+<div class="highlight"><pre lang="">*/5 * * * * cd /var/www/html/ && ./sync-to-drive.js
+</pre></div>
+
+<p>Example to add it on the fly:</p>
+
+<div class="highlight"><pre lang="">crontab -l | { cat; echo "*/5 * * * * cd /var/www/html/ && ./sync-to-drive.js"; } | crontab - 
+</pre></div>
+
+<p>The default config will look for a drive with the label photobooth.<br />If you want to add other drives to sync to just add them to the <code>drivename.conf</code>.<br />Either with their name (sdX), path (/dev/sdX) or with the label (photobooth)</p>
   </body>
 </html>
