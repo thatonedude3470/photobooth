@@ -92,6 +92,7 @@ COMMON_PACKAGES=(
     'nodejs'
     'php-gd'
     'yarn'
+    'rsync'
 )
 
 if [[ ! -d "${booth_source}" ]]; then
