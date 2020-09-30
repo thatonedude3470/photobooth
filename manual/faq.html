@@ -396,6 +396,8 @@ for preview at countdown!
 <div class="highlight"><pre lang="">crontab -l | { cat; echo "*/5 * * * * cd /var/www/html/ && ./sync-to-drive.js"; } | crontab - 
 </pre></div>
 
-<p>The default config will look for a drive with the label photobooth.<br />If you want to add other drives to sync to just add them to the <code>drivename.conf</code>.<br />Either with their name (sdX), path (/dev/sdX) or with the label (photobooth)</p>
+<p>The default config will look for a drive with the label photobooth.<br />If you want to add other drives to sync to just add them to the <code>drivename.conf</code>.<br />Either with their name (<code>sdX</code>), path (<code>/dev/sdX</code>) or with the label (<code>photobooth</code>)</p>
+
+<p><strong>NOTE:</strong> Currently the data directory is hard coded! If you're using a different path for<br />file storage (e.g. not <code>/var/www/html/</code>) you'd need to change it within the <code>sync-to-drive.js</code>.</p>
   </body>
 </html>
