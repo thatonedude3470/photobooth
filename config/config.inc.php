@@ -212,3 +212,9 @@ $config['remotebuzzer_collagetime'] = '2'; // control time to distinguish pictur
 // PRESERVE EXIF
 $config['exiftool']['cmd'] = null;
 $config['exiftool']['msg'] = null;
+
+// BACKUP/SYNC SCRIPT
+// Currently supported formats are : sdX, /dev/sdX and simply the label of the drive (not the manufacturer)
+// In the default config the script will only search for drives with the label photobooth!
+$config['sync_script_enabled'] = false;
+$config['sync_script_targets'] = ['photobooth']; //Default targets for the sync sctipt

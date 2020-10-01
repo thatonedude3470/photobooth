@@ -396,8 +396,15 @@ for preview at countdown!
 <div class="highlight"><pre lang="">crontab -l | { cat; echo "*/5 * * * * cd /var/www/html/ && ./sync-to-drive.js"; } | crontab - 
 </pre></div>
 
-<p>The default config will look for a drive with the label photobooth.<br />If you want to add other drives to sync to just add them to the <code>drivename.conf</code>.<br />Either with their name (<code>sdX</code>), path (<code>/dev/sdX</code>) or with the label (<code>photobooth</code>)</p>
+<p>If you want to add other drives to sync files to, just add them via the admin panel in your <br />browser <a href="http://localhost/admin">localhost/admin</a> or add them directly to the <code>'sync_script_targets'</code> array inside <code>config/my.config.inc.php</code>.</p>
 
-<p><strong>NOTE:</strong> Currently the data directory is hard coded! If you're using a different path for<br />file storage (e.g. not <code>/var/www/html/</code>) you'd need to change it within the <code>sync-to-drive.js</code>.</p>
+<p>Example:</p>
+
+<div class="highlight"><pre lang="">'sync_script_targets' => array (
+  'sdX',
+)
+</pre></div>
+
+<p>Either with their name (<code>sdX</code>), path (<code>/dev/sdX</code>) or with the label (<code>photobooth</code>).<br />The default config will look for a drive with the label photobooth.</p>
   </body>
 </html>
