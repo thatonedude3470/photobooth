@@ -1021,6 +1021,12 @@ $configsetup = [
 			'placeholder' => 'exiftool_msg',
 			'name' => 'exiftool[msg]',
 			'value' => htmlentities($config['exiftool']['msg'])
+		],
+		'nodebin_cmd' => [
+			'type' => 'input',
+			'placeholder' => 'nodebin_cmd',
+			'name' => 'nodebin[cmd]',
+			'value' => htmlentities($config['nodebin']['cmd'])
 		]
 	],
 	'remotebuzzer' => [
@@ -1051,12 +1057,6 @@ $configsetup = [
 			'name' => 'remotebuzzer_pin',
 			'value' => $config['remotebuzzer_pin']
 		],
-		'nodebin' => [
-			'type' => 'input',
-			'placeholder' => $defaultConfig['remotebuzzer_nodebin'],
-			'name' => 'remotebuzzer_nodebin',
-			'value' => $config['remotebuzzer_nodebin']
- 		],
 		'logfile' => [
 			'type' => 'hidden',
 			'name' => 'remotebuzzer_logfile',
@@ -1064,7 +1064,7 @@ $configsetup = [
 		]
  	],
 	'synctodrive' => [
-		'enabled' => [
+		'synctodrive_enabled' => [
 			'type' => 'checkbox',
 			'name' => 'synctodrive_enabled',
 			'value' => $config['synctodrive_enabled']
@@ -1074,6 +1074,16 @@ $configsetup = [
 			'placeholder' => $defaultConfig['synctodrive_targets'],
 			'name' => 'synctodrive_targets',
 			'value' => $config['synctodrive_targets']
+		],
+		'interval' => [
+			'type' => 'range',
+			'placeholder' => $defaultConfig['synctodrive_interval'],
+			'name' => 'synctodrive_interval',
+			'value' => $config['synctodrive_interval'],
+			'range_min' => 10,
+			'range_max' => 600,
+			'range_step' => 1,
+			'unit' => 'seconds'
 		],
 		'logfile' => [
 			'type' => 'hidden',
