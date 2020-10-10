@@ -36,7 +36,7 @@ $cmds = [
             'cmd' => 'exiftool -overwrite_original -TagsFromFile %s %s',
             'msg' => '',
         ],
-        'nodejs' => [
+        'nodebin' => [
             'cmd' => '/usr/bin/node',
         ]
     ],
@@ -71,7 +71,7 @@ $config['print']['cmd'] = $cmds[$os]['print']['cmd'];
 $config['print']['msg'] = $cmds[$os]['print']['msg'];
 $config['exiftool']['cmd'] = $cmds[$os]['exiftool']['cmd'];
 $config['exiftool']['msg'] = $cmds[$os]['exiftool']['msg'];
-$config['nodejs']['cmd'] = $cmds[$os]['nodejs']['cmd'];
+$config['nodebin']['cmd'] = $cmds[$os]['nodebin']['cmd'];
 
 $config['collage_limit'] = 4;
 
