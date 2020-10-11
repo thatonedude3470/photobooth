@@ -382,29 +382,29 @@ for preview at countdown!
 <div class="highlight"><pre lang="">sudo ./setup-network.sh --clean
 </pre></div>
 
-<h3>Turn on file backup</h3>
+<hr>
 
-<p>If you want to enable the automatic file backup/syncing script you need to add a<br />cronjob that changes the working directoy to the photobooth folder and calls the<br />script. Per default the script will run every <a href="https://crontab.guru/#*/5_*_*_*_*">5 minutes</a>.</p>
+<h3>Turn on picture syncing to USB</h3>
 
-<p><strong>Important: You must make sure change to the photobooth directory because the script expects to be run from within the photobooth folder!</strong>.</p>
+<p>Automatic picture backup/syncing to USB via script currently works on Raspberry PI OS only. Use the <code>install-raspbian.sh</code> script to get the operating system setup in place
 
-<div class="highlight"><pre lang="">*/5 * * * * cd /var/www/html/ && ./sync-to-drive.js
-</pre></div>
+<p>In order to select which drives to sync files to, just add them via the admin panel. The list of drive identifier needs to be separated by semicolon. 
 
-<p>Example to add it on the fly:</p>
+<p>Drive identifier can be added either with their name (e.g. <code>sda</code>), their full path (<code>/dev/sda1</code>) or with the USB stick label (<code>photobooth</code>).The default config will look for a drive with the label photobooth.</p>
 
-<div class="highlight"><pre lang="">crontab -l | { cat; echo "*/5 * * * * cd /var/www/html/ && ./sync-to-drive.js"; } | crontab - 
-</pre></div>
-
-<p>If you want to add other drives to sync files to, just add them via the admin panel in your <br />browser <a href="http://localhost/admin">localhost/admin</a> or add them directly to the <code>'sync_script_targets'</code> array inside <code>config/my.config.inc.php</code>.</p>
-
-<p>Example:</p>
-
-<div class="highlight"><pre lang="">'sync_script_targets' => array (
-  'sdX',
-)
-</pre></div>
-
-<p>Either with their name (<code>sdX</code>), path (<code>/dev/sdX</code>) or with the label (<code>photobooth</code>).<br />The default config will look for a drive with the label photobooth.</p>
+<p> The following example would check
+  <ul>
+    <li> Specifically for device /dev/sda1 being mounted </li>
+    <li> For a device being mounted with the name "photobooth"</li>
+    <li> Any device being mounted with the string "sdb" in it's device name</li>
+  </ul>
+      
+<div class="highlight"><pre lang="">
+Example:
+    /dev/sda1;photobooth;sdb
+ </pre></div>
+  
   </body>
 </html>
+
+Pictures will be synced to all devices matched by this list, as long as they are mounted (aka USB stick is plugged in)

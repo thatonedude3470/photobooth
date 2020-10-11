@@ -1064,6 +1064,7 @@ $configsetup = [
 		]
  	],
 	'synctodrive' => [
+		'platform' => 'linux', 
 		'synctodrive_enabled' => [
 			'type' => 'checkbox',
 			'name' => 'synctodrive_enabled',
