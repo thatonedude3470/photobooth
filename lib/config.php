@@ -19,7 +19,7 @@ $cmds = [
             'cmd' => '',
             'msg' => '',
         ],
-	'nodejs' => [
+	'nodebin' => [
             'cmd' => '',
         ]
     ],
