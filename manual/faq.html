@@ -382,29 +382,24 @@ for preview at countdown!
 <div class="highlight"><pre lang="">sudo ./setup-network.sh --clean
 </pre></div>
 
-<hr>
-
 <h3>Turn on picture syncing to USB</h3>
 
-<p>Automatic picture backup/syncing to USB via script currently works on Raspberry PI OS only. Use the <code>install-raspbian.sh</code> script to get the operating system setup in place
+<p>Automatic picture backup/syncing to USB via script currently works on Raspberry PI OS only. Use the <code>install-raspbian.sh</code> script to get the operating system setup in place</p>
 
-<p>In order to select which drives to sync files to, just add them via the admin panel. The list of drive identifier needs to be separated by semicolon. 
+<p>In order to select which drives to sync files to, just add them via the admin panel. The list of drive identifier needs to be separated by semicolon. </p>
 
 <p>Drive identifier can be added either with their name (e.g. <code>sda</code>), their full path (<code>/dev/sda1</code>) or with the USB stick label (<code>photobooth</code>).The default config will look for a drive with the label photobooth.</p>
 
-<p> The following example would check
-  <ul>
-    <li> Specifically for device /dev/sda1 being mounted </li>
-    <li> For a device being mounted with the name "photobooth"</li>
-    <li> Any device being mounted with the string "sdb" in it's device name</li>
-  </ul>
-      
-<div class="highlight"><pre lang="">
-Example:
+<p>The following example would check</p>
+
+<blockquote>
+  <p>Specifically for device <code>/dev/sda1</code> being mounted<br />For a device being mounted with the name <code>photobooth</code><br />Any device being mounted with the string <code>sdb</code> in it's device name</p>
+</blockquote>
+
+<div class="highlight"><pre lang="">Example:
     /dev/sda1;photobooth;sdb
- </pre></div>
-  
+</pre></div>
+
+<p>Pictures will be synced to all devices matched by this list, as long as they are mounted (aka USB stick is plugged in)</p>
   </body>
 </html>
-
-Pictures will be synced to all devices matched by this list, as long as they are mounted (aka USB stick is plugged in)
