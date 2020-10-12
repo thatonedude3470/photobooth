@@ -18,6 +18,9 @@ $cmds = [
         'exiftool' => [
             'cmd' => '',
             'msg' => '',
+        ],
+	'nodebin' => [
+            'cmd' => '',
         ]
     ],
     'linux' => [
@@ -32,6 +35,9 @@ $cmds = [
         'exiftool' => [
             'cmd' => 'exiftool -overwrite_original -TagsFromFile %s %s',
             'msg' => '',
+        ],
+        'nodebin' => [
+            'cmd' => '/usr/bin/node',
         ]
     ],
 ];
@@ -65,10 +71,12 @@ $config['print']['cmd'] = $cmds[$os]['print']['cmd'];
 $config['print']['msg'] = $cmds[$os]['print']['msg'];
 $config['exiftool']['cmd'] = $cmds[$os]['exiftool']['cmd'];
 $config['exiftool']['msg'] = $cmds[$os]['exiftool']['msg'];
+$config['nodebin']['cmd'] = $cmds[$os]['nodebin']['cmd'];
 
 $config['collage_limit'] = 4;
 
-$config['remotebuzzer_logfile'] = 'io_server.log';
+$config['remotebuzzer_logfile'] = 'remotebuzzer_server.log';
+$config['synctodrive_logfile'] = 'synctodrive_server.log';
 
 $defaultConfig = $config;
 

@@ -99,6 +99,7 @@ if ($data['type'] == 'config') {
 
     if ($os === 'windows') {
         $newConfig['remotebuzzer_enabled'] = false;
+        $newConfig['synctodrive_enabled'] = false;
     }
 
     $content = "<?php\n\$config = ". var_export(arrayRecursiveDiff($newConfig, $defaultConfig), true) . ";";
@@ -112,7 +113,8 @@ if ($data['type'] == 'config') {
     }
 }
 
-require_once('../lib/remotebuzzer_config.php');
+/* Kill service daemons after config has changed */
+require_once('../lib/services_stop.php');
 
 function arrayRecursiveDiff($aArray1, $aArray2)
 {
